@@ -14,6 +14,8 @@ import Generate from './src/components/Generator/Generator';
 import ListItem from './src/components/Generator/ListItem';
 import Input from './src/components/Input/Input';
 import PickerComp from './src/components/Picker/Picker';
+import ImageComp from './src/components/Image/ImageComp';
+import ModalComp from './src/components/Modal/ModalComp';
 
 const App = () => {
   const [nameOfApp, setNameApp] = useState('My Awesome app');
@@ -31,7 +33,7 @@ const App = () => {
     setRandom(newArr);
   };
 
-  const {container, wrapper} = styles;
+  const {container, wrapper, greatImg} = styles;
   return (
     <View style={container}>
       <Navbar name={nameOfApp} />
@@ -41,6 +43,8 @@ const App = () => {
           <ListItem items={random} onDelete={onItemDelete} />
           <ActivityIndicator size="large" color="red" animating={loading} />
           <Input />
+          <ImageComp />
+          <ModalComp />
           <PickerComp />
         </View>
       </ScrollView>
