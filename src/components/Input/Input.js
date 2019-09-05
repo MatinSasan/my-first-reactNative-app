@@ -11,8 +11,14 @@ const Input = props => {
   };
 
   const onAddThings = () => {
+    if (myInput === '') return;
     setThings([...things, myInput]);
     setInput('');
+  };
+
+  const onItemDeleteInput = i => {
+    const newArr = things.filter((thing, index) => i !== index);
+    setThings(newArr);
   };
 
   return (
@@ -24,8 +30,8 @@ const Input = props => {
         onChangeText={onChangeInput}
       />
       <Button title="Add it" onPress={onAddThings} />
-      {things.map(thing => (
-        <Text style={styleThings} key={thing}>
+      {things.map((thing, i) => (
+        <Text style={styleThings} key={i} onPress={() => onItemDeleteInput(i)}>
           {thing}
         </Text>
       ))}

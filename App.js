@@ -7,20 +7,23 @@
  */
 
 import React, {useState} from 'react';
-import {StyleSheet, View, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView, ActivityIndicator} from 'react-native';
 
 import Navbar from './src/components/Nav/Navbar';
 import Generate from './src/components/Generator/Generator';
 import ListItem from './src/components/Generator/ListItem';
 import Input from './src/components/Input/Input';
+import PickerComp from './src/components/Picker/Picker';
 
 const App = () => {
   const [nameOfApp, setNameApp] = useState('My Awesome app');
   const [random, setRandom] = useState([20, 13]);
+  const [loading, setLoading] = useState(false);
 
   const onAddRandom = () => {
     const newRandom = Math.floor(Math.random() * 100) + 1;
     setRandom([...random, newRandom]);
+    setLoading(!loading);
   };
 
   const onItemDelete = i => {
@@ -36,7 +39,9 @@ const App = () => {
         <View style={wrapper}>
           <Generate add={onAddRandom} />
           <ListItem items={random} onDelete={onItemDelete} />
+          <ActivityIndicator size="large" color="red" animating={loading} />
           <Input />
+          <PickerComp />
         </View>
       </ScrollView>
     </View>
