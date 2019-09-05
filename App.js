@@ -12,6 +12,7 @@ import {StyleSheet, View} from 'react-native';
 import Navbar from './src/components/Nav/Navbar';
 import Generate from './src/components/Generator/Generator';
 import ListItem from './src/components/Generator/ListItem';
+import Input from './src/components/Input/Input';
 
 const App = () => {
   const [nameOfApp, setNameApp] = useState('My Awesome app');
@@ -32,8 +33,8 @@ const App = () => {
     <View style={container}>
       <Navbar name={nameOfApp} />
       <Generate add={onAddRandom} />
-
       <ListItem items={random} onDelete={onItemDelete} />
+      <Input />
     </View>
   );
 };
