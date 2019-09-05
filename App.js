@@ -22,13 +22,18 @@ const App = () => {
     setRandom([...random, newRandom]);
   };
 
+  const onItemDelete = i => {
+    const newArr = random.filter((item, index) => index !== i);
+    setRandom(newArr);
+  };
+
   const {container} = styles;
   return (
     <View style={container}>
       <Navbar name={nameOfApp} />
       <Generate add={onAddRandom} />
 
-      <ListItem items={random} />
+      <ListItem items={random} onDelete={onItemDelete} />
     </View>
   );
 };

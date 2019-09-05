@@ -1,10 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 
-const ListItem = ({items}) => {
+const ListItem = ({items, onDelete}) => {
   return items.map((item, i) => (
     <TouchableOpacity
-      onPress={() => alert(':O')}
+      onPress={() => onDelete(i)}
       key={i}
       style={styles.listItem}>
       <View>
