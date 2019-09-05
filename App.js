@@ -7,7 +7,7 @@
  */
 
 import React, {useState} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, ScrollView} from 'react-native';
 
 import Navbar from './src/components/Nav/Navbar';
 import Generate from './src/components/Generator/Generator';
@@ -28,13 +28,17 @@ const App = () => {
     setRandom(newArr);
   };
 
-  const {container} = styles;
+  const {container, wrapper} = styles;
   return (
     <View style={container}>
       <Navbar name={nameOfApp} />
-      <Generate add={onAddRandom} />
-      <ListItem items={random} onDelete={onItemDelete} />
-      <Input />
+      <ScrollView style={{width: '100%'}}>
+        <View style={wrapper}>
+          <Generate add={onAddRandom} />
+          <ListItem items={random} onDelete={onItemDelete} />
+          <Input />
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -46,6 +50,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     marginTop: 20,
+  },
+  wrapper: {
+    flex: 1,
+    width: '100%',
+    padding: 20,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
 });
 
